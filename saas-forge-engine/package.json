@@ -1,0 +1,27 @@
+{
+  "name": "saas-forge-engine",
+  "version": "1.0.0",
+  "description": "SaaS-Forge — Fábrica Autônoma de Micro-SaaS. Orquestrador local que transforma ideias em linguagem natural em aplicações SaaS prontas para rodar.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "forge:mock": "FORGE_LLM_PROVIDER=mock node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "saas",
+    "generator",
+    "llm",
+    "orchestrator",
+    "code-generation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

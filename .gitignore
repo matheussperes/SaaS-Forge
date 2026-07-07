@@ -1,0 +1,17 @@
+# Dependências
+node_modules/
+
+# Projetos gerados pela esteira (não versionar os Micro-SaaS despejados)
+saas-forge-engine/output/*
+!saas-forge-engine/output/.gitkeep
+
+# Segredos e ambiente
+.env
+.env.local
+*.local
+
+# Logs e artefatos
+*.log
+npm-debug.log*
+dist/
+.DS_Store
