@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SaaS-Forge — Fábrica Autônoma de Micro-SaaS</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #0d1117; color: #e6edf3; min-height: 100vh;
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+    header h1 { font-size: 26px; letter-spacing: 0.5px; }
+    header h1 span { color: #f5a623; }
+    header p { color: #8b949e; margin-top: 6px; font-size: 14px; }
+
+    .panel {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 20px; margin-top: 24px;
+    }
+    .panel h2 { font-size: 15px; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+    textarea {
+      width: 100%; min-height: 110px; resize: vertical;
+      background: #0d1117; color: #e6edf3; border: 1px solid #30363d;
+      border-radius: 8px; padding: 12px; font-size: 15px; font-family: inherit;
+    }
+    textarea:focus { outline: none; border-color: #f5a623; }
+
+    .toggles { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .toggle {
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+      background: #0d1117; border: 1px solid #30363d; border-radius: 20px;
+      padding: 8px 14px; font-size: 14px; user-select: none; transition: border-color 0.15s;
+    }
+    .toggle:has(input:checked) { border-color: #f5a623; color: #f5a623; }
+    .toggle input { accent-color: #f5a623; }
+
+    .actions { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+    #forgeBtn {
+      background: #f5a623; color: #1c1300; border: none; border-radius: 8px;
+      font-size: 16px; font-weight: 700; padding: 12px 28px; cursor: pointer;
+    }
+    #forgeBtn:hover:not(:disabled) { background: #ffb938; }
+    #forgeBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+    #status { font-size: 13px; color: #8b949e; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+    .step {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 10px 12px; font-size: 13px; text-align: center; color: #8b949e;
+    }
+    .step[data-status='running'] { border-color: #f5a623; color: #f5a623; }
+    .step[data-status='done'] { border-color: #2ea043; color: #3fb950; }
+    .step[data-status='failed'] { border-color: #f85149; color: #f85149; }
+
+    #console {
+      background: #010409; border: 1px solid #30363d; border-radius: 8px;
+      height: 320px; overflow-y: auto; padding: 14px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      font-size: 12.5px; line-height: 1.7; white-space: pre-wrap; word-break: break-word;
+    }
+    .line-info { color: #8b949e; }
+    .line-ok { color: #3fb950; }
+    .line-warn { color: #d29922; }
+    .line-error { color: #f85149; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>⚙️ SaaS-<span>Forge</span></h1>
+      <p>Fábrica Autônoma de Micro-SaaS — descreva a ideia e a esteira constrói banco, backend, pagamentos e frontend.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Caixa de Visão</h2>
+      <textarea id="idea" placeholder="Ex.: App para agendar consultas de nutrição, com cadastro de pacientes e lembretes."></textarea>
+
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" id="featGoogleAuth" /> Autenticação via Google</label>
+        <label class="toggle"><input type="checkbox" id="featAdminDashboard" /> Dashboard Admin</label>
+      </div>
+
+      <div class="actions">
+        <button id="forgeBtn">🔥 Forjar SaaS</button>
+        <span id="status">aguardando conexão…</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Esteira de Produção</h2>
+      <div class="steps">
+        <div class="step" data-step="scaffold">📁 Estrutura</div>
+        <div class="step" data-step="schema">🗄️ Schema SQL</div>
+        <div class="step" data-step="backend">🧩 Backend CRUD</div>
+        <div class="step" data-step="stripe">💳 Stripe</div>
+        <div class="step" data-step="frontend">🖥️ Frontend</div>
+        <div class="step" data-step="install">📦 Install</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Console de Log</h2>
+      <div id="console"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
