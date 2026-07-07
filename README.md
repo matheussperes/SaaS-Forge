@@ -47,6 +47,9 @@ Cada etapa tem retry automático; falhas são registradas no console visual do p
 - **Isolamento**: o orquestrador usa a porta `4600`; os projetos gerados usam
   `5050` (API) e `5173` (Vite), sem conflito.
 
+> 📖 Guia completo de instalação, configuração, operação do painel e
+> solução de problemas: **[MANUAL.md](MANUAL.md)**
+
 ## Como rodar
 
 ```bash
