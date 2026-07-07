@@ -58,3 +58,20 @@ npm start              # abre o painel em http://localhost:4600
 
 Sem chave de API, o sistema roda em modo `mock` (templates determinísticos),
 útil para validar a esteira fim a fim.
+
+## Verificação fim a fim (executada)
+
+A esteira foi validada em modo `mock` com a ideia *"App para agendar consultas
+de nutrição"*:
+
+1. `POST /api/forge` disparou a esteira; as 6 etapas concluíram em ~100s
+   (incluindo `npm install` automatizado do projeto gerado).
+2. O projeto saiu em `output/app-para-agendar-consultas-de-nutricao/` com
+   repositório git inicializado (commit "SaaS inicial gerado pelo SaaS-Forge").
+3. `npm run dev` no projeto gerado subiu API (5050) e frontend (5173) sem erros:
+   - `GET /api/health` → `{"ok":true,...}`
+   - `POST /api/items` + `GET /api/items` → CRUD SQLite funcionando
+   - `GET /api/billing/plan` e `POST /api/billing/checkout` → módulo Stripe OK
+     (modo simulado sem `STRIPE_SECRET_KEY`)
+   - Vite serviu o app e compilou `Login.jsx`, `Dashboard.jsx` e `Settings.jsx`;
+     proxy `/api` → 5050 funcionando.
